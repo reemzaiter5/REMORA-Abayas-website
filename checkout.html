@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RÉMORA | Checkout</title>
+
+    <link rel="stylesheet" href="checkout.css">
+</head>
+
+<body>
+
+    <header class="checkout-header">
+        <a href="index.html" class="checkout-brand">RÉMORA<span>.</span></a>
+        <a href="index.html" class="back-to-shop">← Back to Shop</a>
+    </header>
+
+
+    <main class="checkout-container">
+
+        <section class="checkout-main">
+
+            <div class="checkout-heading">
+                <p class="eyebrow">RÉMORA ABAYAS</p>
+                <h1>Complete Your Order</h1>
+                <p>Enter your delivery details to place your order.</p>
+            </div>
+
+
+            <form id="checkoutForm">
+
+                <section class="checkout-section">
+
+                    <h2>01. Customer Information</h2>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="customerName">Full Name</label>
+                            <input
+                                type="text"
+                                id="customerName"
+                                name="customerName"
+                                placeholder="Your full name"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerUsername">Username</label>
+                            <input
+                                type="text"
+                                id="customerUsername"
+                                name="customerUsername"
+                                placeholder="Your username"
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerEmail">Email Address</label>
+                            <input
+                                type="email"
+                                id="customerEmail"
+                                name="customerEmail"
+                                placeholder="example@email.com"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="customerPhone">Phone Number</label>
+                            <input
+                                type="tel"
+                                id="customerPhone"
+                                name="customerPhone"
+                                placeholder="+961..."
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="checkout-section">
+
+                    <h2>02. Delivery Information</h2>
+
+                    <div class="form-group">
+                        <label for="deliveryAddress">Full Delivery Address</label>
+                        <textarea
+                            id="deliveryAddress"
+                            name="deliveryAddress"
+                            rows="3"
+                            placeholder="Area, street, building, floor, apartment..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label for="deliveryDate">Requested Delivery Date</label>
+                            <input
+                                type="date"
+                                id="deliveryDate"
+                                name="deliveryDate"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deliveryTime">Requested Delivery Time</label>
+                            <select id="deliveryTime" name="deliveryTime" required>
+                                <option value="">Choose a time</option>
+                                <option value="09:00 - 12:00">09:00 - 12:00</option>
+                                <option value="12:00 - 15:00">12:00 - 15:00</option>
+                                <option value="15:00 - 18:00">15:00 - 18:00</option>
+                                <option value="18:00 - 21:00">18:00 - 21:00</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="orderNotes">Additional Notes (Optional)</label>
+                        <textarea
+                            id="orderNotes"
+                            name="orderNotes"
+                            rows="3"
+                            placeholder="Any delivery instructions..."
+                        ></textarea>
+                    </div>
+
+                </section>
+
+
+                <section class="checkout-section">
+
+                    <h2>03. Payment Method</h2>
+
+                    <div class="payment-options">
+
+                        <label class="payment-option">
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="cash_on_delivery"
+                                checked
+                            >
+                            <span>
+                                <strong>Cash on Delivery</strong>
+                                <small>Pay when your order arrives.</small>
+                            </span>
+                        </label>
+
+                        <label class="payment-option">
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="wish"
+                            >
+                            <span>
+                                <strong>WISH Money</strong>
+                                <small>Payment instructions will be confirmed with you.</small>
+                            </span>
+                        </label>
+
+                        <label class="payment-option">
+                            <input
+                                type="radio"
+                                name="paymentMethod"
+                                value="card"
+                            >
+                            <span>
+                                <strong>Card</strong>
+                                <small>Card payment arrangements will be confirmed with you.</small>
+                            </span>
+                        </label>
+
+                    </div>
+
+                </section>
+
+
+                <p id="checkoutMessage" role="status"></p>
+
+                <button type="submit" id="placeOrderButton">
+                    Place Order
+                </button>
+
+            </form>
+
+        </section>
+
+
+        <aside class="order-summary">
+
+            <div class="summary-heading">
+                <p class="eyebrow">YOUR SELECTION</p>
+                <h2>Order Summary</h2>
+            </div>
+
+            <div id="checkoutItems"></div>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <strong id="checkoutTotal">$0.00</strong>
+            </div>
+
+            <p class="summary-note">
+                Your order will be sent to RÉMORA for confirmation.
+            </p>
+
+        </aside>
+
+    </main>
+
+
+    <div class="confirmation-overlay" id="confirmationOverlay">
+
+        <div class="confirmation-card">
+
+            <div class="confirmation-icon">✓</div>
+
+            <p class="eyebrow">THANK YOU</p>
+
+            <h2>Your Order Is Placed!</h2>
+
+            <p>Your order number is:</p>
+
+            <strong id="confirmationOrderNumber"></strong>
+
+            <p class="confirmation-total">
+                Total: <span id="confirmationTotal"></span>
+            </p>
+
+            <a href="index.html">Continue Shopping</a>
+
+        </div>
+
+    </div>
+
+
+    <script type="module" src="checkout.js"></script>
+
+</body>
+</html>

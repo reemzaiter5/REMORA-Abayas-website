@@ -1,0 +1,661 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RÉMORA Abayas</title>
+
+    <link
+        rel="stylesheet"
+        href="index.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         NAVBAR
+    ====================================================== -->
+
+    <header class="navbar">
+
+        <div class="nav-brand">
+            <a href="#home">RÉMORA<span>.</span></a>
+        </div>
+
+        <nav class="nav-center" id="mobileMenu">
+
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#contact">Contact</a>
+
+            <div class="nav-search">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search products..."
+                    aria-label="Search products"
+                >
+
+                <button
+                    type="button"
+                    class="search-btn"
+                    id="searchButton"
+                    aria-label="Search"
+                >
+                    🔍
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <div class="nav-right">
+
+            <div class="customer-account">
+
+                <a href="auth.html" id="customerUsername">
+                    Sign In
+                </a>
+
+                <button
+                    type="button"
+                    id="logoutButton"
+                    class="customer-auth-hidden"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+
+            <div class="cart-container">
+
+                <button
+                    id="cart-btn"
+                    type="button"
+                    aria-label="Shopping cart"
+                >
+                    🛒
+                </button>
+
+                <span id="cart-count" class="cart-badge">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mobileMenu"
+        >
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </button>
+
+    </header>
+
+
+    <!-- =====================================================
+         HOME / HERO
+    ====================================================== -->
+
+    <section
+        id="home"
+        class="hero"
+    >
+
+        <div class="hero-overlay"></div>
+
+        <div class="hero-content">
+
+            <p class="hero-eyebrow">
+                THE RÉMORA COLLECTION
+            </p>
+
+            <h1>
+                Elegance in
+                <span>Every Detail</span>
+            </h1>
+
+            <p class="hero-description">
+                Discover our collection of timeless abayas,
+                thoughtfully designed for effortless elegance,
+                modesty and modern femininity.
+            </p>
+
+            <a
+                href="#shop"
+                class="hero-button"
+            >
+                Explore Collection
+            </a>
+
+        </div>
+
+        <div class="hero-scroll">
+            <span></span>
+            Scroll to explore
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SHOP
+    ====================================================== -->
+
+    <section
+        id="shop"
+        class="shop-section"
+    >
+
+        <div class="section-heading">
+
+            <p class="section-eyebrow">
+                OUR COLLECTION
+            </p>
+
+            <h2>
+                Timeless Abayas
+            </h2>
+
+            <p class="section-description">
+                Discover pieces created to bring elegance
+                and confidence to every occasion.
+            </p>
+
+        </div>
+
+        <div
+            class="products-grid"
+            id="products-container"
+        ></div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PRODUCT DETAILS MODAL
+    ====================================================== -->
+
+    <div
+        class="product-modal"
+        id="product-modal"
+    >
+
+        <div class="product-modal-content">
+
+            <button
+                class="close-product"
+                type="button"
+                id="closeProductButton"
+                aria-label="Close product"
+            >
+                &times;
+            </button>
+
+
+            <!-- PRODUCT IMAGE -->
+
+            <div class="product-detail-image-container">
+
+                <button
+                    class="detail-arrow detail-left"
+                    id="detail-prev"
+                    type="button"
+                    aria-label="Previous image"
+                >
+                    ‹
+                </button>
+
+                <img
+                    id="detail-image"
+                    src=""
+                    alt="Abaya"
+                >
+
+                <button
+                    class="detail-arrow detail-right"
+                    id="detail-next"
+                    type="button"
+                    aria-label="Next image"
+                >
+                    ›
+                </button>
+
+            </div>
+
+
+            <!-- PRODUCT INFORMATION -->
+
+            <div class="product-details">
+
+                <p class="detail-small-title">
+                    RÉMORA COLLECTION
+                </p>
+
+                <h2 id="detail-name">
+                    Product Name
+                </h2>
+
+                <p
+                    class="detail-price"
+                    id="detail-price"
+                >
+                    $0
+                </p>
+
+                <p
+                    class="detail-description"
+                    id="detail-description"
+                >
+                    Product description
+                </p>
+
+
+                <!-- COLORS -->
+
+                <div
+                    class="detail-colors-section"
+                    id="detail-colors-section"
+                >
+
+                    <h4>
+                        Color
+                    </h4>
+
+                    <div
+                        class="detail-colors"
+                        id="detail-colors"
+                    ></div>
+
+                    <p class="selected-color">
+
+                        Selected:
+
+                        <span id="selected-color-name"></span>
+
+                    </p>
+
+                </div>
+
+
+                <!-- QUANTITY -->
+
+                <div class="quantity-section">
+
+                    <h4>
+                        Quantity
+                    </h4>
+
+                    <div class="quantity-control">
+
+                        <button
+                            type="button"
+                            id="detail-decrease"
+                            aria-label="Decrease quantity"
+                        >
+                            −
+                        </button>
+
+                        <span id="detail-quantity">
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            id="detail-increase"
+                            aria-label="Increase quantity"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ADD TO CART -->
+
+                <button
+                    type="button"
+                    class="detail-add-cart"
+                    id="detail-add-cart"
+                >
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         SHOPPING CART
+    ====================================================== -->
+
+    <div
+        class="cart-overlay"
+        id="cart"
+    >
+
+        <div class="cart-header">
+
+            <div>
+
+                <p>
+                    RÉMORA
+                </p>
+
+                <h2>
+                    Your Cart
+                </h2>
+
+            </div>
+
+            <button
+                type="button"
+                id="closeCartButton"
+                aria-label="Close cart"
+            >
+                &times;
+            </button>
+
+        </div>
+
+
+        <div
+            class="cart-items"
+            id="cart-items"
+        ></div>
+
+
+        <div class="cart-footer">
+
+            <h3>
+
+                <span>
+                    Total
+                </span>
+
+                <span id="cart-total">
+                    $0.00
+                </span>
+
+            </h3>
+
+            <button
+                type="button"
+                class="checkout-button"
+                id="checkoutButton"
+            >
+                Proceed to Checkout
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTACT
+    ====================================================== -->
+
+    <section
+        class="contact"
+        id="contact"
+    >
+
+        <div class="contact-wrapper">
+
+            <div class="contact-info">
+
+                <p class="section-eyebrow">
+                    GET IN TOUCH
+                </p>
+
+                <h2>
+                    We'd Love To
+                    <span>Hear From You</span>
+                </h2>
+
+                <p class="contact-description">
+                    Have a question about an abaya, your order,
+                    or anything else? Leave us a message and
+                    our team will be happy to help.
+                </p>
+
+                <ul class="contact-details">
+
+                    <li>
+
+                        <span class="contact-icon">
+                            ✉
+                        </span>
+
+                        <div>
+
+                            <small>
+                                Email
+                            </small>
+
+                            <strong>
+                                support@remorashop.com
+                            </strong>
+
+                        </div>
+
+                    </li>
+
+
+                    <li>
+
+                        <span class="contact-icon">
+                            ☎
+                        </span>
+
+                        <div>
+
+                            <small>
+                                Phone
+                            </small>
+
+                            <strong>
+                                +961 XX XXX XXX
+                            </strong>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <form
+                class="contact-form"
+                id="contactForm"
+            >
+
+                <div class="form-group">
+
+                    <label for="contact-name">
+                        Your Name
+                    </label>
+
+                    <input
+                        id="contact-name"
+                        type="text"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contact-email">
+                        Email Address
+                    </label>
+
+                    <input
+                        id="contact-email"
+                        type="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="contact-message">
+                        Your Message
+                    </label>
+
+                    <textarea
+                        id="contact-message"
+                        rows="5"
+                        placeholder="How can we help you?"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn"
+                >
+                    Send Message
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>
+                    RÉMORA<span>.</span>
+                </h3>
+
+                <p>
+                    Your modesty and fashion starts here
+                    with our brand.
+                </p>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#shop">
+                    Shop
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
+
+            <div class="footer-column">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    support@remorashop.com
+                </p>
+
+                <p>
+                    +961 XX XXX XXX
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <hr>
+
+        <p class="copyright">
+            © 2026 RÉMORA Shop | All Rights Reserved
+        </p>
+
+    </footer>
+
+
+    <!-- TOAST -->
+
+    <div
+        id="toast"
+        class="toast"
+    ></div>
+
+
+    <!-- LOAD SCRIPTS ONCE -->
+
+    <script src="app.js"></script>
+    <script type="module" src="auth.js"></script>
+
+    <script src="app.js"></script>
+    <script src="checkout-bridge.js"></script>
+    <script type="module" src="auth.js"></script>
+
+
+</body>
+</html>

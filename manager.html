@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RÉMORA | Manager Dashboard</title>
+
+    <link rel="stylesheet" href="manager.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-layout">
+
+        <aside class="sidebar">
+
+            <a href="index.html" class="sidebar-brand">
+                RÉMORA<span>.</span>
+            </a>
+
+            <p class="sidebar-label">MANAGEMENT</p>
+
+            <nav class="sidebar-nav">
+                <a href="#overview" class="active">Overview</a>
+                <a href="#orders">Orders</a>
+                <a href="index.html">View Shop</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p id="managerEmail"></p>
+                <button id="managerLogout" type="button">Log Out</button>
+            </div>
+
+        </aside>
+
+
+        <main class="dashboard-main">
+
+            <header class="dashboard-header">
+
+                <div>
+                    <p class="eyebrow">RÉMORA MANAGEMENT</p>
+                    <h1 id="shopTitle">Dashboard Overview</h1>
+                    <p class="header-description">
+                        Manage your shop and monitor your orders.
+                    </p>
+                </div>
+
+                <button id="refreshDashboard" type="button">
+                    Refresh Data
+                </button>
+
+            </header>
+
+
+            <div id="dashboardMessage" role="status"></div>
+
+
+            <section class="stats-grid" id="overview">
+
+                <article class="stat-card">
+                    <p>Total Orders</p>
+                    <h2 id="totalOrders">0</h2>
+                    <span>All orders received</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Total Revenue</p>
+                    <h2 id="totalRevenue">$0.00</h2>
+                    <span>Excluding cancelled orders</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Pending Orders</p>
+                    <h2 id="pendingOrders">0</h2>
+                    <span>Waiting for confirmation</span>
+                </article>
+
+                <article class="stat-card">
+                    <p>Today's Orders</p>
+                    <h2 id="todayOrders">0</h2>
+                    <span>Orders received today</span>
+                </article>
+
+            </section>
+
+
+            <section class="orders-section" id="orders">
+
+                <div class="orders-heading">
+
+                    <div>
+                        <p class="eyebrow">SHOP ACTIVITY</p>
+                        <h2>Customer Orders</h2>
+                    </div>
+
+                    <div class="order-filters">
+
+                        <input
+                            type="search"
+                            id="orderSearch"
+                            placeholder="Search customer or order..."
+                        >
+
+                        <select id="statusFilter">
+                            <option value="all">All Statuses</option>
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="preparing">Preparing</option>
+                            <option value="out_for_delivery">Out for Delivery</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <div id="ordersContainer" class="orders-container">
+
+                    <div class="loading-state">
+                        Loading orders...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <script type="module" src="manager.js"></script>
+
+</body>
+</html>
